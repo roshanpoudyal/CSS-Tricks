@@ -1,0 +1,7 @@
+/* for any text element set the text overflow to show with ellipses*/
+
+.textelement {
+  width         : 20px; /* set some width for text or it will inherit parents' */
+  overflow      : hidden;
+  text-overflow : ellipsis;
+}
