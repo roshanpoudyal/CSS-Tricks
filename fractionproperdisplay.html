@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Proper display of fraction - best case i found yet</title>
+	</head>
+	
+	<!-- internal style -->
+	<style>
+		
+	div.container{
+		padding : 2em;
+		background-color: rgba(0,0,0,0.2);
+	}
+	/*best display for a fraction*/
+    .fraction {
+        display         : inline-table;
+        text-align      : center; /*this can be here or inside .fraction's child */
+        vertical-align  : middle; /*oh wow this is a wow align test without this and 							see what wow LOL*/
+        border-collapse : collapse;
+    }
+
+    .fraction .numerator,
+    .fraction .denominator{
+        display : table-row;
+    }
+
+    .fraction .numerator{
+        border-bottom : solid rgb(0, 0, 0) 1px;
+    }
+
+    /*best display for a fraction*/
+	</style>
+
+	<body>
+		<h3>Proper display of fraction - best case i found yet</h3>
+
+		<div class="container">
+			<p class="sentence">
+	            This is one fraction in sentence : 
+	            <span class="fraction">
+	                <em class="numerator"> v - u </em>
+	                <strong class="denominator"> t </strong>
+	            </span>
+        	</p>
+
+        	<p class="sentence">This is another fraction (only fraction): </p>
+            <span class="fraction justfraction">
+                <em class="numerator"> v - u </em>
+                <strong class="denominator"> t </strong>
+            </span>
+		</div>
+	</body>
+</html>
+
