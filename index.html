@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Step animation</title>
+	</head>
+	
+	<!-- internal style -->
+	<style>
+	body{
+		border : 2px solid grey;
+		font-size : 2.5vmin;
+	}
+
+	img{
+		width : 45%;
+	}
+
+	button{
+		margin: 3% 5%;
+		font-size: 2em;
+		cursor : pointer;
+	}
+
+	div.animationcontainer{
+		position: relative;
+		width : 100%;
+		height: 40%;
+		border-top  : 0.3em solid grey;
+	}
+
+	div.animationcontainer > div{
+		float : left;
+		position: relative;
+		width: 30%;
+		height: 100%;
+	}
+
+	div.animationcontainer > div:nth-of-type(-n+3){
+		margin-left:2%;
+	}
+
+	div.animationcontainer > div:nth-of-type(-n+2){
+		border-right : 0.3em solid grey;
+	}
+
+	div.stepanim{
+		position : relative;
+        display  : block;
+        width: 30%;
+        height: 40%;     
+
+        background-size     : 1000% 100%;
+        background-position : 0% 0%;
+        background-image    : url("spriteanimationtest.png");
+	}
+
+	@keyframes bganimrepeat{
+        100% { background-position: -1000% 0%; }
+    }
+
+    @-webkit-keyframes bganimrepeat{
+      100% { background-position: -1000% 0%; }
+    }
+
+	div.animationrepeated{
+		-webkit-animation : bganimrepeat 1s steps(10) infinite;
+        animation         : bganimrepeat 1s steps(10) infinite;
+	}	
+
+	div.animationstopatbeginningframe{
+		-webkit-animation : bganimrepeat 1s steps(10) forwards;
+        animation         : bganimrepeat 1s steps(10) forwards;
+	}
+
+	@keyframes bganimstopatendframe{
+        100% { background-position: -900% 0%; }
+    }
+
+    @-webkit-keyframes bganimstopatendframe{
+      100% { background-position: -900% 0%; }
+    }
+
+    div.animationstopatendframe{
+		-webkit-animation : bganimstopatendframe 1s steps(9) forwards;
+        animation         : bganimstopatendframe 1s steps(9) forwards;
+	}
+	
+	</style>
+
+	<body id="body">
+		<h3>Step animation different variations.</h3>
+		<p>Below is our image used for sprite animation, <mark>carefully view the start frame and the end frame.</mark> <h2>total steps in sprite image: 10</h2></p>
+		<img src="spriteanimationtest.png">
+		
+		<div class="animationcontainer">
+			<div>
+				<h4>repeated animation</h4>
+				<div class="stepanim animationrepeated"></div>
+			</div>
+
+			<div>
+				<h4>animation stops at start frame</h4>
+				<div class="stepanim animationstopatbeginningframe"></div>
+			</div>
+
+			<div>
+				<h4>animation stops at end frame</h4>
+				<div class="stepanim animationstopatendframe"></div>
+			</div>
+		</div>
+
+		<button id="playthisanimation">Play Again</button>
+		
+		<script type="text/javascript">
+
+		function setbodywidth(){
+			var bodywidth =  window.innerWidth-30;
+			var bodyheight = window.innerHeight;
+			var body = document.getElementById("body");
+			body.style.width = bodywidth+"px";
+			body.style.height = bodyheight+"px";
+		}
+
+		setbodywidth();
+
+		window.onresize = function(){setbodywidth();}; 
+
+		var playagainbutton = document.getElementById("playthisanimation");
+		playagainbutton.onclick = function(){location.reload();};
+	</script>
+	</body>
+
+	
+
+</html>
